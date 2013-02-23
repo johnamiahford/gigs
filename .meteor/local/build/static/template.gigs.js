@@ -1,0 +1,1 @@
+Meteor.startup(function(){document.body.appendChild(Spark.render(Meteor._def_template(null,Handlebars.json_ast_to_func([[">","hello"]]))));});Meteor._def_template("hello",Handlebars.json_ast_to_func(["<h1>Hello World!</h1>\n  ",["{",[[0,"greeting"]]],"\n  <input type=\"button\" value=\"Click\" />"]));
