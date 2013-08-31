@@ -147,5 +147,4 @@ exports.view = function(req, res, next){
     title: 'Viewing user ' + req.user.username,
     user: req.user
   });
->>>>>>> upstream/development
 };
