@@ -37,16 +37,15 @@ function createApp() {
         force: true
     });
 
-    app
-        .set('view engine', 'jade')
-        .set('views', path.join(__dirname, 'views'))
-        .use(timeouts)
-        .use(stylusMiddleware)
-        .use(staticFiles)
-        .use(express.bodyParser())
-        .use(express.methodOverride())
-        .use(express.cookieParser())
-        .use(express.session({
+        app.set('view engine', 'jade');
+        app.set('views', path.join(__dirname, 'views'));
+        app.use(timeouts);
+        app.use(stylusMiddleware);
+        app.use(staticFiles);
+        app.use(express.bodyParser());
+        app.use(express.methodOverride());
+        app.use(express.cookieParser());
+        app.use(express.session({
         secret: 'foobar'
     }));
 
@@ -59,20 +58,20 @@ function startApp() {
     var page = require('./routes/page');
     var app = createApp();
 
-  // Define Routes
-  app.get('/', page.home);
-  app.all('/u/:id/:op?', user.load);
-  app.get('/logout', user.logout);
-  app.post('/login', user.login, page.home);
-  app.get('/jobs', job.list);
-	app.get('/jobs/create', job.new_job);
-  app.post('/jobs/create', job.create);
-	app.get('/jobs/:id', job.detail);
-  app.get('/signup', signup, page.home);
-  app.post('/signup', user.checkIfExists, user.register);
-  app.get('/users', user.checkLoggedIn, user.list);
-  app.get('/users/:id', user.view);
-  app.listen(3000);
+    // Define Routes
+    app.get('/', page.home);
+    app.all('/u/:id/:op?', user.load);
+    app.get('/logout', user.logout);
+    app.post('/login', user.login, page.home);
+    app.get('/jobs', job.list);
+    app.get('/jobs/create', job.new_job);
+    app.post('/jobs/create', job.create);
+    app.get('/jobs/:id', job.detail);
+    app.get('/signup', signup, page.home);
+    app.post('/signup', user.checkIfExists, user.register);
+    app.get('/users', user.checkLoggedIn, user.list);
+    app.get('/users/:id', user.view);
+    app.listen(3000);
 }
 
 function signup(req, res, next){
